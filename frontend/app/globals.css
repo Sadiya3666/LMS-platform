@@ -1,0 +1,436 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #0F172A;
+  --accent: #7c3aed;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: white;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+.auth-page-wrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #0F172A;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.auth-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.auth-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+
+.auth-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.auth-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem 0.875rem 3rem;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #7c3aed;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+}
+
+.auth-icon {
+  position: absolute;
+  left: 1rem;
+  color: #64748b;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.auth-button {
+  width: 100%;
+  background: linear-gradient(to right, #7c3aed, #2563eb);
+  color: white;
+  font-weight: 700;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.auth-button:hover {
+  opacity: 0.9;
+}
+
+.auth-button:active {
+  transform: scale(0.98);
+}
+
+.auth-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Video Page Layout */
+.video-layout-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .video-layout-container {
+    flex-direction: row;
+  }
+}
+
+.video-main-content {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .video-main-content {
+    flex: 0 0 70%;
+  }
+}
+
+.video-player-box {
+  position: relative;
+  width: 100%;
+  background-color: black;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+  /* Explicit 16:9 aspect ratio */
+  aspect-ratio: 16 / 9;
+}
+
+.video-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+}
+
+.tabs-header {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-button {
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.tab-button.active {
+  color: #a855f7;
+  border-bottom-color: #a855f7;
+}
+
+.tab-button:hover:not(.active) {
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+/* Sidebar Styling */
+.subject-sidebar {
+  width: 320px;
+  height: calc(100vh - 64px);
+  background: #1e293b; /* Dark slate by default */
+  border-right: 1px solid rgba(255,255,255,0.1);
+  display: none;
+  flex-direction: column;
+  color: #f8fafc;
+  overflow-y: auto;
+}
+
+@media (min-width: 1024px) {
+  .subject-sidebar {
+    display: flex;
+  }
+}
+
+.sidebar-header {
+  padding: 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.subject-layout-wrapper {
+  display: flex;
+  min-height: calc(100vh - 64px);
+  width: 100%;
+  overflow: hidden;
+  background-color: #0f172a; /* Dark background */
+}
+
+/* Light Mode Overrides */
+body.light-mode {
+  --bg-primary: #f8fafc;
+  color: #1e293b;
+}
+
+body.light-mode .subject-layout-wrapper {
+  background-color: #f1f5f9;
+}
+
+body.light-mode .video-layout-container {
+  background-color: #f8fafc;
+}
+
+body.light-mode .video-card {
+  background: white;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .text-white {
+  color: #0f172a !important;
+}
+
+body.light-mode .text-slate-300 {
+  color: #334155 !important;
+}
+
+body.light-mode .text-slate-400 {
+  color: #475569 !important;
+}
+
+body.light-mode .bg-white\/5 {
+  background-color: #f1f5f9 !important;
+}
+
+body.light-mode .border-white\/10 {
+  border-color: #e2e8f0 !important;
+}
+
+body.light-mode .auth-page-wrapper {
+  background-color: #f1f5f9;
+}
+
+body.light-mode .auth-card {
+  background: white;
+  border-color: #e2e8f0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .auth-input {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+body.light-mode .auth-label {
+  color: #64748b;
+}
+
+body.light-mode .tab-button:hover:not(.active) {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+body.light-mode .subject-sidebar {
+  background-color: white;
+  border-color: #e2e8f0;
+}
+
+/* Dashboard Theme Classes */
+.dashboard-title {
+  background: linear-gradient(135deg, #e2d9f3, #ffffff, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.light-mode .dashboard-title {
+  background: linear-gradient(135deg, #1e293b, #4f46e5, #1e293b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashboard-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+body.light-mode .dashboard-subtitle {
+  color: #64748b;
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+body.light-mode .card-glass {
+  background: white;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  color: #1e293b;
+}
+
+.card-title {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+body.light-mode .card-title {
+  color: #0f172a;
+}
+
+.card-text-muted {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+body.light-mode .card-text-muted {
+  color: #64748b;
+}
+
+.search-input-glass {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+body.light-mode .search-input-glass {
+  background: white;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+/* Profile Theme Classes */
+.profile-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .profile-card {
+  background: white;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.profile-stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.light-mode .profile-stat-card {
+  background: white;
+  border-color: #e2e8f0;
+  color: #1e293b;
+}
+
+.profile-text-bright {
+  color: white;
+}
+
+body.light-mode .profile-text-bright {
+  color: #0f172a;
+}
+
+.profile-text-dim {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+body.light-mode .profile-text-dim {
+  color: #64748b;
+}
+
+.profile-table-header {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.light-mode .profile-table-header {
+  background: #f8fafc;
+  color: #475569;
+}
+
+.profile-progress-bg {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .profile-progress-bg {
+  background: #e2e8f0;
+}

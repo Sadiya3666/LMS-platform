@@ -1,0 +1,43 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE / System files
+.vscode/
+.idea/
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Prisma generated files
+schema.prisma.bak
+# (Wait, schema.prisma should be committed, but the sqlite db if any should be ignored)
+*.db
+*.db-journal
+
+# Compiled code
+lib-cov
+coverage
+*.lcov
+.nyc_output
+.eslintcache
+.stylelintcache
+
+# Temporary files
+tmp/
+temp/
