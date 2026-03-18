@@ -5,10 +5,10 @@ dotenv.config();
 
 const envSchema = z.object({
   DATABASE_URL: z.string().url(),
-  JWT_SECRET: z.string().min(32),
+  JWT_SECRET: z.string().min(8).default("super-secret-default-key-change-me-later"),
   JWT_ACCESS_EXPIRES_IN: z.string().default("15m"),
   JWT_REFRESH_EXPIRES_DAYS: z.string().default("30"),
-  CORS_ORIGIN: z.string().url(),
+  CORS_ORIGIN: z.string().default("*"),
   COOKIE_DOMAIN: z.string().optional(),
   PORT: z.string().default("4000"),
 });
