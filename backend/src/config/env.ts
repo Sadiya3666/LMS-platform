@@ -7,7 +7,12 @@ const envSchema = z.object({
   DATABASE_URL: z.string(),
   JWT_SECRET: z.string().min(8).default("super-secret-default-key-change-me-later"),
   JWT_ACCESS_EXPIRES_IN: z.string().default("15m"),
-  JWT_REFRESH_EXPIRES_DAYS: z.string().default("30"),
+  JWT_REFRESH_EXPIRES_DAYS: z.union([z.string(), z.number()]).transform(val => {
+    if (typeof val === 'number') return val;
+    const clean = val.replace(/['"]/g, '');
+    const num = parseInt(clean);
+    return isNaN(num) ? 30 : num;
+  }).default(30),
   CORS_ORIGIN: z.string().default("*"),
   COOKIE_DOMAIN: z.string().optional(),
   PORT: z.string().default("4000"),

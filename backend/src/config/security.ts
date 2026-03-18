@@ -8,4 +8,4 @@ export const cookieOptions: CookieOptions = {
   domain: env.COOKIE_DOMAIN,
 };
 
-export const refreshTokenExpiresInDays = parseInt(env.JWT_REFRESH_EXPIRES_DAYS);
+export const refreshTokenExpiresInDays = env.JWT_REFRESH_EXPIRES_DAYS;
